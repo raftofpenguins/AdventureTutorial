@@ -15,6 +15,12 @@
 *.sublime-workspace
 *.png
 
+# 2D Adventure Tutorial Assets
+[Aa]ssets/Art/
+[Aa]ssets/Audio/
+[Aa]ssets/Demo/
+[Aa]ssets/Misc/
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
