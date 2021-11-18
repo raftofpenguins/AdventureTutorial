@@ -15,9 +15,13 @@ public class RubyController : MonoBehaviour
     {
         // Code from 2nd lesson
         float horizontal = Input.GetAxis("Horizontal"); // Gets horizontal input and stores in variable
-        Debug.Log(horizontal);                          // Displays horizontal variable in debug log
+        float vertical = Input.GetAxis("Vertical");     // Gets vertical input and stores in variable
+
+        // Debug.Log(horizontal);                       // Displays horizontal variable in debug log
         Vector2 position = transform.position;          // Created variable storing Ruby's position
         position.x = position.x + 0.1f * horizontal;    // Moves game object horizontally
+        position.y = position.y + 0.1f * vertical;      // Moves game object vertically
+
         transform.position = position;                  // Sets game object's position to new value
 
         /* Original test code
