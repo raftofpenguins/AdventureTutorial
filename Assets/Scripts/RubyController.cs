@@ -19,8 +19,8 @@ public class RubyController : MonoBehaviour
 
         // Debug.Log(horizontal);                       // Displays horizontal variable in debug log
         Vector2 position = transform.position;          // Created variable storing Ruby's position
-        position.x = position.x + 0.1f * horizontal;    // Moves game object horizontally
-        position.y = position.y + 0.1f * vertical;      // Moves game object vertically
+        position.x = position.x + 3.0f * Time.deltaTime * horizontal;    // Moves game object horizontally
+        position.y = position.y + 3.0f * Time.deltaTime * vertical;      // Moves game object vertically
 
         transform.position = position;                  // Sets game object's position to new value
 
