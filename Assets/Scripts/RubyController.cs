@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class RubyController : MonoBehaviour
 {
+    // Added during World Interactions - Collectibles
+    public int maxHealth = 5;
+    int currentHealth;
+
+    // My attempt at exposing player speed variable
+    public float playerSpeed = 3.0f;
+
     //Added during World Interactions part 9
     Rigidbody2D rigidbody2d;
     float horizontal;
@@ -13,6 +20,7 @@ public class RubyController : MonoBehaviour
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -48,10 +56,16 @@ public class RubyController : MonoBehaviour
     // Added during World Interactions tutorial part 9
     void FixedUpdate()
     {
-        Vector2 position = rigidbody2d.position;                           // Created variable storing Ruby's position
-        position.x = position.x + 3.0f * Time.deltaTime * horizontal;       // Moves game object horizontally
-        position.y = position.y + 3.0f * Time.deltaTime * vertical;         // Moves game object vertically
+        Vector2 position = rigidbody2d.position;                                    // Created variable storing Ruby's position
+        position.x = position.x + playerSpeed * Time.deltaTime * horizontal;        // Moves game object horizontally
+        position.y = position.y + playerSpeed * Time.deltaTime * vertical;          // Moves game object vertically
 
-        rigidbody2d.MovePosition(position);                                 // Sets game object's position to new value
+        rigidbody2d.MovePosition(position);                                         // Sets game object's position to new value
+    }
+
+    void ChangeHealth(int amount)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        Debug.Log(currentHealth + "/" + maxHealth);
     }
 }
