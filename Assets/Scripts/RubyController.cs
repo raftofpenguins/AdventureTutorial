@@ -22,12 +22,18 @@ public class RubyController : MonoBehaviour
     float horizontal;
     float vertical;
 
+    //Added during Sprite Animation tutorial
+    Animator playerAnimator;
+    Vector2 lookDirection = new Vector2(1,0);
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         //currentHealth = 1;
+
+        playerAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -35,6 +41,19 @@ public class RubyController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal"); // Gets horizontal input and stores in variable
         vertical = Input.GetAxis("Vertical");     // Gets vertical input and stores in variable
+
+        //Added during Sprite Animation tutorial
+        Vector2 playerMove = new Vector2(horizontal, vertical);
+
+        if(!Mathf.Approximately(playerMove.x, 0.0f) || !Mathf.Approximately(playerMove.x, 0.0f))
+        {
+            lookDirection.Set(playerMove.x, playerMove.y);
+            lookDirection.Normalize();
+        }
+
+        playerAnimator.SetFloat("Look X", lookDirection.x);
+        playerAnimator.SetFloat("Look Y", lookDirection.y);
+        playerAnimator.SetFloat("Speed", playerMove.magnitude);
 
         if (isInvincible)
         {
@@ -84,6 +103,7 @@ public class RubyController : MonoBehaviour
             if (isInvincible)
                 return;
 
+            playerAnimator.SetTrigger("Hit");
             isInvincible = true;
             invincibleTimer = timeInvincible;
         }
