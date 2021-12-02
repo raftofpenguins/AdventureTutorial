@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
             }
         }
 
-        Debug.Log("moveCycle: " + moveCycle + " | moveVertically: " + moveVertically);
+        //Debug.Log("moveCycle: " + moveCycle + " | moveVertically: " + moveVertically);
     }
 
     void FixedUpdate()
@@ -53,22 +53,30 @@ public class EnemyController : MonoBehaviour
         if (moveVertically == true) {
             if (upOrDown == true)
             {
+                enemyAnimator.SetFloat("Move X", 0);
+                enemyAnimator.SetFloat("Move Y", 1);
                 enemyPosition.y = enemyPosition.y + enemySpeed * Time.deltaTime;
                 enemyRigidbody.MovePosition(enemyPosition);
             }
             else
             {
+                enemyAnimator.SetFloat("Move X", 0);
+                enemyAnimator.SetFloat("Move Y", -1);
                 enemyPosition.y = enemyPosition.y - enemySpeed * Time.deltaTime;
                 enemyRigidbody.MovePosition(enemyPosition);
             }
         } else {
             if (leftOrRight == true)
             {
+                enemyAnimator.SetFloat("Move X", 1);
+                enemyAnimator.SetFloat("Move Y", 0);
                 enemyPosition.x = enemyPosition.x + enemySpeed * Time.deltaTime;
                 enemyRigidbody.MovePosition(enemyPosition);
             }
             else
             {
+                enemyAnimator.SetFloat("Move X", -1);
+                enemyAnimator.SetFloat("Move Y", 0);
                 enemyPosition.x = enemyPosition.x - enemySpeed * Time.deltaTime;
                 enemyRigidbody.MovePosition(enemyPosition);
             }
