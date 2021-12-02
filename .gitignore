@@ -12,6 +12,7 @@
 
 # My additions
 [Pp]rojectSettings/
+[Uu]serSettings/
 *.sublime-workspace
 *.png
 *.bmp
