@@ -6,9 +6,13 @@ public class RubyController : MonoBehaviour
 {
     // Added during World Interactions - Collectibles
     public int maxHealth = 5;
+    public float timeInvincible = 2.0f;
 
     public int health { get { return currentHealth;}} // Property used to access private int below
     int currentHealth;
+
+    bool isInvincible;
+    float invincibleTimer;
 
     // My attempt at exposing player speed variable
     public float playerSpeed = 3.0f;
@@ -31,6 +35,13 @@ public class RubyController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal"); // Gets horizontal input and stores in variable
         vertical = Input.GetAxis("Vertical");     // Gets vertical input and stores in variable
+
+        if (isInvincible)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+                isInvincible = false;
+        }
 
         // Code from 2nd lesson
         /*
@@ -68,6 +79,15 @@ public class RubyController : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
+        if (amount < 0)
+        {
+            if (isInvincible)
+                return;
+
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+        }
+        
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
     }
