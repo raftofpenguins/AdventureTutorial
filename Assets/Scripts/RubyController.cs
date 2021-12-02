@@ -6,6 +6,8 @@ public class RubyController : MonoBehaviour
 {
     // Added during World Interactions - Collectibles
     public int maxHealth = 5;
+
+    public int health { get { return currentHealth;}} // Property used to access private int below
     int currentHealth;
 
     // My attempt at exposing player speed variable
@@ -21,7 +23,7 @@ public class RubyController : MonoBehaviour
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-        currentHealth = 1;
+        //currentHealth = 1;
     }
 
     // Update is called once per frame

@@ -12,8 +12,12 @@ public class HealthCollectible : MonoBehaviour
 
         if (controller != null)
         {
-            controller.ChangeHealth(1);
-            Destroy(gameObject);
+            // Added condition to check if HP is full
+            if(controller.health < controller.maxHealth)
+            {
+                controller.ChangeHealth(1);
+                Destroy(gameObject);
+            }
         }
     }
 }
