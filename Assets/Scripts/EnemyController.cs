@@ -8,7 +8,10 @@ public class EnemyController : MonoBehaviour
     public float enemySpeed = 2.0f;
     public float maxLoop = 2.0f;
     bool upOrDown = true;
+    bool leftOrRight = true;
+    bool moveVertically = true;
     float loopDuration = 0.0f;
+    int moveCycle = 0;
 
     Rigidbody2D enemyRigidbody;
 
@@ -29,26 +32,50 @@ public class EnemyController : MonoBehaviour
         else
         {
             upOrDown = !upOrDown;
+            leftOrRight = !leftOrRight;
             loopDuration = 0;
+
+            if (moveCycle < 1) {
+                moveCycle += 1;
+            } else {
+                moveVertically = !moveVertically;
+                moveCycle = 0;
+            }
         }
 
-        //Debug.Log(loopDuration);
+        Debug.Log("moveCycle: " + moveCycle + " | moveVertically: " + moveVertically);
     }
 
     void FixedUpdate()
     {
         Vector2 enemyPosition = enemyRigidbody.position;
 
-        if (upOrDown == true)
-        {
-            enemyPosition.y = enemyPosition.y + enemySpeed * Time.deltaTime;
-            enemyRigidbody.MovePosition(enemyPosition);
+        if (moveVertically == true) {
+            if (upOrDown == true)
+            {
+                enemyPosition.y = enemyPosition.y + enemySpeed * Time.deltaTime;
+                enemyRigidbody.MovePosition(enemyPosition);
+            }
+            else
+            {
+                enemyPosition.y = enemyPosition.y - enemySpeed * Time.deltaTime;
+                enemyRigidbody.MovePosition(enemyPosition);
+            }
+        } else {
+            if (leftOrRight == true)
+            {
+                enemyPosition.x = enemyPosition.x + enemySpeed * Time.deltaTime;
+                enemyRigidbody.MovePosition(enemyPosition);
+            }
+            else
+            {
+                enemyPosition.x = enemyPosition.x - enemySpeed * Time.deltaTime;
+                enemyRigidbody.MovePosition(enemyPosition);
+            }
         }
-        else
-        {
-            enemyPosition.y = enemyPosition.y - enemySpeed * Time.deltaTime;
-            enemyRigidbody.MovePosition(enemyPosition);
-        }
+            
+
+        
 
         //Debug.Log(enemyPosition.y);
 
