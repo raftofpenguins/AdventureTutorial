@@ -63,7 +63,7 @@ public class RubyController : MonoBehaviour
         rigidbody2d.MovePosition(position);                                         // Sets game object's position to new value
     }
 
-    void ChangeHealth(int amount)
+    public void ChangeHealth(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
