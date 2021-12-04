@@ -100,10 +100,11 @@ public class RubyController : MonoBehaviour
     {
         if (amount < 0)
         {
+            
+            playerAnimator.SetTrigger("Hit");
             if (isInvincible)
                 return;
-
-            playerAnimator.SetTrigger("Hit");
+            
             isInvincible = true;
             invincibleTimer = timeInvincible;
         }
