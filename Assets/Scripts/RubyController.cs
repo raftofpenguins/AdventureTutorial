@@ -26,6 +26,9 @@ public class RubyController : MonoBehaviour
     Animator playerAnimator;
     Vector2 lookDirection = new Vector2(1,0);
 
+    //Added during Projectile tutorial
+    public GameObject projectilePrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +63,12 @@ public class RubyController : MonoBehaviour
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
                 isInvincible = false;
+        }
+
+        //Added during Projectile tutorial
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            LaunchCog();
         }
 
         // Code from 2nd lesson
@@ -112,4 +121,15 @@ public class RubyController : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
     }
+
+    void LaunchCog()
+    {
+        GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.LaunchCog(lookDirection, 300);
+
+        playerAnimator.SetTrigger("LaunchCog");
+    }
+
 }
