@@ -68,7 +68,8 @@ public class RubyController : MonoBehaviour
         //Added during Projectile tutorial
         if (Input.GetKeyDown(KeyCode.C))
         {
-            LaunchCog();
+            //LaunchCog();
+            Debug.Log("lookDirection: " + lookDirection);
         }
 
         // Code from 2nd lesson

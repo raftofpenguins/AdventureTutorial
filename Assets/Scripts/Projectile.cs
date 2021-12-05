@@ -5,12 +5,12 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
 
-    Rigidbody2D cogRigidbody2d;
+    Rigidbody2D rigidbody2d;
 
     // Start is called before the first frame update
     void Start()
     {
-        cogRigidbody2d = GetComponent<Rigidbody2D>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
 
     public void LaunchCog(Vector2 direction, float force)
     {
-        cogRigidbody2d.AddForce(direction * force);
+        rigidbody2d.AddForce(direction * force);
     }
 
     void OnCollisionEnter2D(Collision2D other)
