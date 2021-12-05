@@ -30,7 +30,7 @@ public class RubyController : MonoBehaviour
     public GameObject projectilePrefab;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
