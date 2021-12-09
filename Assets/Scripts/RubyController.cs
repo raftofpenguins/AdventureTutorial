@@ -65,12 +65,14 @@ public class RubyController : MonoBehaviour
                 isInvincible = false;
         }
 
+        /*
         //Added during Projectile tutorial
         if (Input.GetKeyDown(KeyCode.C))
         {
             //LaunchCog();
             Debug.Log("lookDirection: " + lookDirection);
         }
+        */
 
         // Code from 2nd lesson
         /*
