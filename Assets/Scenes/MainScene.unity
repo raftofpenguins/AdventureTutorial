@@ -719,7 +719,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.825516, y: 1}
+    m_SensorSize: {x: 1.3333334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -11503,6 +11503,7 @@ GameObject:
   - component: {fileID: 1737196685}
   - component: {fileID: 1737196687}
   - component: {fileID: 1737196686}
+  - component: {fileID: 1737196688}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -11568,6 +11569,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737196684}
   m_CullTransparentMesh: 1
+--- !u!114 &1737196688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737196684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1cbf6b16bf38346ad8b0cbff894322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask: {fileID: 807873035}
 --- !u!1001 &178310596460104101
 PrefabInstance:
   m_ObjectHideFlags: 0
