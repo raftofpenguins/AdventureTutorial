@@ -48,7 +48,7 @@ public class RubyController : MonoBehaviour
         //Added during Sprite Animation tutorial
         Vector2 playerMove = new Vector2(horizontal, vertical);
 
-        if(!Mathf.Approximately(playerMove.x, 0.0f) || !Mathf.Approximately(playerMove.x, 0.0f))
+        if(!Mathf.Approximately(playerMove.x, 0.0f) || !Mathf.Approximately(playerMove.y, 0.0f))
         {
             lookDirection.Set(playerMove.x, playerMove.y);
             lookDirection.Normalize();
@@ -64,6 +64,8 @@ public class RubyController : MonoBehaviour
             if (invincibleTimer < 0)
                 isInvincible = false;
         }
+
+        //Debug.Log(lookDirection);
 
         /*
         //Added during Projectile tutorial
