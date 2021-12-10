@@ -10,9 +10,10 @@ public class UIHealthBar : MonoBehaviour
     public Image mask;
     float originalSize;
 
+    //Awake runs as soon as object is created
     void Awake()
     {
-        instance = this;
+        instance = this;    // stores instance of object; can call UIHealthBar.instance to reference health bar in that scene
     }
 
     // Start is called before the first frame update
